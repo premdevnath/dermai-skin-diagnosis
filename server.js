@@ -132,7 +132,7 @@ app.post('/api/analyze', upload.single('skinImage'), async (req, res) => {
 // Gemini analysis function — uses SKILL.md
 // ════════════════════════════════════════════════════
 async function analyzeSkinImage(imageBase64, mimeType, patientData) {
-  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-preview-05-20' });
+  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
   const prompt = `
 ${SKILL_CONTENT}
@@ -331,8 +331,8 @@ app.get('*', (req, res) => {
 // START SERVER
 // ════════════════════════════════════════════════════
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`\n🔬 DermAI Server running on port ${PORT}`);
-  console.log(`   Frontend: http://localhost:${PORT}`);
-  console.log(`   Admin:    http://localhost:${PORT}/admin-ds-x92\n`);
+  console.log(`   Frontend: http://0.0.0.0:${PORT}`);
+  console.log(`   Admin:    http://0.0.0.0:${PORT}/admin-ds-x92\n`);
 });
