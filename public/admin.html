@@ -14,8 +14,10 @@
     <div class="login-logo">🔬</div>
     <h2>DermAI Admin</h2>
     <p>Skin Analysis Dashboard</p>
-    <input type="password" id="adminPass" placeholder="Enter admin password" autofocus>
-    <button onclick="adminLogin()">Access Dashboard →</button>
+    <form onsubmit="event.preventDefault(); adminLogin();">
+      <input type="password" id="adminPass" placeholder="Enter admin password" autofocus>
+      <button type="submit">Access Dashboard →</button>
+    </form>
     <div id="loginErr" class="err"></div>
   </div>
 </div>
