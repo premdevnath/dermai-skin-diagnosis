@@ -132,10 +132,7 @@ app.post('/api/analyze', upload.single('skinImage'), async (req, res) => {
 // Gemini analysis function — uses SKILL.md
 // ════════════════════════════════════════════════════
 async function analyzeSkinImage(imageBase64, mimeType, patientData) {
-  const model = genAI.getGenerativeModel(
-    { model: 'gemini-1.5-flash' },
-    { apiVersion: 'v1' }
-  );
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
   const prompt = `
 ${SKILL_CONTENT}
