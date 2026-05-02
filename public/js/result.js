@@ -115,36 +115,12 @@
 
   html += `</div>`; // close analysis-card
 
-  // ── Nearest Doctors ──
-  html += `<div class="doctors-section">
-    <h2 style="font-size:1.4rem">🩺 <span class="gold-text">Consult a Specialist</span></h2>
-    <p style="color:var(--text-muted);font-size:.9rem">Dermatologists and skin clinics near you</p>
-    <div class="doctors-grid">`;
-
-  if (a.nearby_doctors && a.nearby_doctors.length) {
-    a.nearby_doctors.forEach((doc, i) => {
-      html += `<div class="doctor-card">
-        <h4>👨‍⚕️ ${esc(doc.name)}</h4>
-        <div class="dc-spec">${esc(doc.specialty || 'Dermatologist')}</div>
-        <div class="dc-loc">📍 ${esc(doc.location || p.city || '')}</div>
-        <div class="dc-stars">★★★★${i===0?'★':'☆'}</div>
-        <div class="dc-actions">
-          ${doc.phone ? `<a href="tel:${doc.phone}" class="dc-btn">📞 Call Now</a>` : ''}
-          <a href="https://www.google.com/maps/search/dermatologist+near+${encodeURIComponent(doc.location||p.city||'me')}" target="_blank" class="dc-btn">📍 Directions</a>
-        </div>
-      </div>`;
-    });
-  } else {
-    // Fallback
-    html += `<div class="doctor-card" style="grid-column:1/-1">
-      <h4>Find a dermatologist near you</h4>
-      <div class="city-search">
-        <input type="text" id="citySearch" placeholder="Enter your city" value="${esc(p.city||'')}">
-        <button onclick="window.open('https://www.google.com/maps/search/dermatologist+near+'+encodeURIComponent(document.getElementById('citySearch').value||'me'),'_blank')">Search</button>
-      </div>
-    </div>`;
-  }
-  html += `</div>`;
+  // ── Nearest Doctors / Book Doctor ──
+  html += `<div class="doctors-section" style="text-align:center; padding: 2rem; background: rgba(201,168,76,0.1); border-radius: 12px; margin-bottom: 2rem; border: 1px solid var(--gold);">
+    <h2 style="font-size:1.6rem; margin-bottom: 0.5rem;">🩺 <span class="gold-text">Want a real doctor's opinion?</span></h2>
+    <p style="color:var(--text-muted); font-size:1rem; margin-bottom: 1.5rem;">Get a verified diagnosis and prescription from a certified dermatologist.</p>
+    <button onclick="window.location.href='/doctors.html?analysis_id=${result.record_id || ''}'" class="share-btn primary" style="font-size: 1.1rem; padding: 1rem 2rem; border-radius: 8px; width:100%; max-width: 400px; display:inline-block; font-weight: bold;">Book a Dermatologist — ₹99 onwards →</button>
+  </div>`;
 
   // Emergency Contacts
   html += `<div class="emergency-card">

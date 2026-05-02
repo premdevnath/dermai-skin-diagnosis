@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DermAI — Book a Certified Dermatologist</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .doctors-header { padding: 4rem 1.5rem 2rem; text-align: center; }
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 3rem; }
+    .filter-bar input, .filter-bar select { background: var(--surface); color: var(--text); border: 1px solid var(--border); padding: 0.8rem 1.2rem; border-radius: 8px; font-family: inherit; }
+    .filter-bar input:focus, .filter-bar select:focus { border-color: var(--gold); outline: none; }
+    .doctors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; padding-bottom: 4rem; }
+    .doctor-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s; }
+    .doctor-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+    .doctor-photo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); margin: 0 auto 1rem; background: var(--surface2); }
+    .doctor-name { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .doctor-spec { color: var(--gold); font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .doctor-loc, .doctor-lang { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.25rem; }
+    .doctor-stars { color: #F6E05E; margin: 0.5rem 0 1rem; }
+    .doctor-fee { font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+    .btn-block { display: block; width: 100%; text-align: center; padding: 0.8rem; background: rgba(201,168,76,0.1); color: var(--gold); border: 1px solid var(--gold); border-radius: 8px; transition: all 0.3s; cursor: pointer; }
+    .btn-block:hover { background: var(--gold); color: #000; }
+  </style>
+</head>
+<body>
+
+  <header style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
+    <a href="/" style="font-size:1.5rem; font-weight:bold; color:var(--text);"><span class="gold-text">Derm</span>AI</a>
+  </header>
+
+  <div class="container">
+    <div class="doctors-header">
+      <h1 class="gold-text" style="font-size: 2.5rem; margin-bottom: 1rem;">Book a Certified Dermatologist</h1>
+      <p style="color: var(--text-muted); font-size: 1.1rem;">Verified experts available for online consultation</p>
+    </div>
+
+    <div class="filter-bar">
+      <input type="text" id="filterCity" placeholder="Search by city (e.g., Jaipur)">
+      <select id="filterLang">
+        <option value="">All Languages</option>
+        <option value="Hindi">Hindi</option>
+        <option value="English">English</option>
+      </select>
+    </div>
+
+    <div class="doctors-grid" id="doctorsGrid">
+      <div style="text-align:center; grid-column:1/-1; padding: 4rem; color: var(--text-muted);">Loading doctors...</div>
+    </div>
+  </div>
+
+  <script src="js/doctors.js"></script>
+</body>
+</html>
